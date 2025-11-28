@@ -1,5 +1,6 @@
 
 export const themes = {
+
   warmVintage: {
     name: "Warm & Vintage",
     colors: {
@@ -22,6 +23,7 @@ export const themes = {
       "--ring": "25 45% 35%",
     },
   },
+
   coolModern: {
     name: "Cool & Modern",
     colors: {
@@ -44,6 +46,7 @@ export const themes = {
       "--ring": "210 60% 45%",
     },
   },
+
   naturalOrganic: {
     name: "Natural & Organic",
     colors: {
@@ -66,6 +69,7 @@ export const themes = {
       "--ring": "120 25% 40%",
     },
   },
+
   playfulCreative: {
     name: "Playful & Creative",
     colors: {
@@ -88,6 +92,7 @@ export const themes = {
       "--ring": "280 70% 65%",
     },
   },
+
   darkElegant: {
     name: "Dark & Elegant",
     colors: {

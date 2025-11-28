@@ -51,8 +51,9 @@ export default function ThemePlayground() {
         </header>
 
         <section className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+
           <button
-            className="rounded-md px-4 py-2 font-medium transition-colors"
+            className="rounded-md px-4 py-2 font-medium transition-all hover:brightness-120 active:brightness-90"
             style={{
               backgroundColor: `hsl(var(--primary))`,
               color: `hsl(var(--primary-foreground))`,
@@ -62,7 +63,7 @@ export default function ThemePlayground() {
           </button>
 
           <button
-            className="rounded-md px-4 py-2 font-medium border transition-colors"
+            className="rounded-md px-4 py-2 font-medium border transition-all hover:brightness-120 active:brightness-90"
             style={{
               backgroundColor: `hsl(var(--secondary))`,
               color: `hsl(var(--secondary-foreground))`,
@@ -73,7 +74,7 @@ export default function ThemePlayground() {
           </button>
 
           <button
-            className="rounded-md px-4 py-2 font-medium transition-colors"
+            className="rounded-md px-4 py-2 font-medium transition-all hover:brightness-120 active:brightness-90"
             style={{
               backgroundColor: `hsl(var(--accent))`,
               color: `hsl(var(--accent-foreground))`,
