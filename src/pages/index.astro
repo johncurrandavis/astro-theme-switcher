@@ -1,9 +1,16 @@
 ---
-import ThemePlayground from "../components/ThemePlayground.jsx";
-
 import Layout from '../layouts/Layout.astro';
+import LandingHero from '../components/LandingHero.astro';
+import ThemePlayground from "../components/ThemePlayground.jsx";
 ---
 
 <Layout>
-  <ThemePlayground />
+  <section class="relative min-h-screen items-center flex py-20 md:py-16 overflow-hidden">
+    <LandingHero />
+  </section>
+
+  <section>
+    <ThemePlayground />
+  </section>
+
 </Layout>

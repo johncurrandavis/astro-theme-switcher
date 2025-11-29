@@ -85,6 +85,7 @@ export default function ThemePlayground() {
         </section>
 
         <section className="grid sm:grid-cols-2 gap-6 mt-10">
+
           <div
             className="rounded-lg p-6 border shadow-sm"
             style={{
@@ -113,6 +114,7 @@ export default function ThemePlayground() {
               Useful for showing subtle differences in background or tone.
             </p>
           </div>
+
         </section>
       </div>
     </div>
