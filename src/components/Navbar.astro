@@ -8,85 +8,69 @@ const menuItems = [
 ];
 ---
 
-<nav
-  x-data="{ isOpen: false, scrolled: false }"
-  @scroll.window="scrolled = window.scrollY > 50"
-  class="w-full bg-[hsl(var(--card))] text-[hsl(var(--card-foreground))]
-         flex items-center justify-between px-6 py-6 transition-all duration-300"
-  :class="scrolled ? 'py-3 bg-white shadow-sm' : 'py-5 bg-transparent'"
->
+<nav class="w-full bg-[hsl(var(--card))] text-[hsl(var(--card-foreground))] flex items-center justify-between px-6 py-6 relative">
 
   <!-- Left: Logo -->
-  <div class="flex items-center">
-    <a href="/" class="text-xl font-semibold tracking-tight">
-      Wayne Stephens Photography
-    </a>
-  </div>
+  <a href="/" class="text-xl font-semibold tracking-tight">
+    Wayne Stephens Photography
+  </a>
 
-  <!-- Middle: Desktop Menu -->
+  <!-- Desktop Menu -->
   <div class="hidden md:flex items-center gap-8 ml-auto">
-    {
-      menuItems.map((item) => (
-        <a
-          href={item.link}
-          class="nav-link relative after:content-[''] after:absolute after:left-0
-                 after:bottom-[-2px] after:h-[2px] after:bg-black after:w-0
-                 hover:after:w-full transition-all"
-        >
-          {item.name}
-        </a>
-      ))
-    }
+    {menuItems.map(item => (
+      <a href={item.link}>{item.name}</a>
+    ))}
+    <ThemeSelector client:load class="ml-6" />
   </div>
 
-  <!-- Right: ThemeSelector + Mobile Toggle -->
-  <div class="flex items-center gap-4 ml-6">
+  <!-- Hamburger Button (mobile) -->
+  <button id="hamburger" class="md:hidden ml-auto text-2xl focus:outline-none">
+    ☰
+  </button>
 
-    <ThemeSelector client:load />
+  <!-- Mobile Drawer -->
+  <div id="mobile-menu" class="fixed top-0 right-0 w-64 h-full
+       bg-[hsl(var(--card))] text-[hsl(var(--card-foreground))]
+       shadow-xl z-50 flex flex-col py-6 px-6 space-y-4 text-lg
+       border-l border-[hsl(var(--border))]
+       transform translate-x-full transition-transform duration-300 md:hidden">
 
-    <!-- Mobile Menu Button -->
-    <button
-      @click="isOpen = !isOpen"
-      class="md:hidden text-gray-800 focus:outline-none"
-    >
-      <svg x-show="!isOpen" class="h-6 w-6" fill="none" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
+    <!-- Close Button -->
+    <button id="close-menu" class="ml-auto mb-4 text-2xl focus:outline-none">×</button>
 
-      <svg x-show="isOpen" class="h-6 w-6" fill="none" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-  </div>
+    {menuItems.map(item => (
+      <a href={item.link} class="py-2 px-1 rounded-md hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--accent-foreground))] transition-colors">
+        {item.name}
+      </a>
+    ))}
 
-  <!-- Mobile Slide-In Menu -->
-  <div>
-    <div
-      x-show="isOpen"
-      class="fixed top-0 right-0 w-64 h-full bg-white shadow-xl z-50
-        flex flex-col py-6 px-6 space-y-6 text-lg
-        md:hidden"
-      x-transition:enter="transform transition ease-out duration-300"
-      x-transition:enter-start="translate-x-full"
-      x-transition:enter-end="translate-x-0"
-      x-transition:leave="transform transition ease-in duration-200"
-      x-transition:leave-start="translate-x-0"
-      x-transition:leave-end="translate-x-full"
-    >
-      {
-        menuItems.map((item) => (
-          <a
-            href={item.link}
-            class="block"
-            @click="isOpen = false"
-          >
-            {item.name}
-          </a>
-        ))
-      }
+    <div class="pt-4 border-t border-[hsl(var(--border))]">
+      <ThemeSelector client:load />
     </div>
+
   </div>
 
 </nav>
+
+<script is:inline client:load>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const closeMenu = document.getElementById('close-menu');
+
+  // Open drawer
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('translate-x-full');
+  });
+
+  // Close drawer with "X" button
+  closeMenu.addEventListener('click', () => {
+    mobileMenu.classList.add('translate-x-full');
+  });
+
+  // Close drawer when clicking a link
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('translate-x-full');
+    });
+  });
+</script>
