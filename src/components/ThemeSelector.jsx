@@ -27,7 +27,7 @@ export default function ThemeSelector() {
     <select
       value={theme}
       onChange={(e) => setTheme(e.target.value)}
-      className="px-6 py-1.5 rounded text-sm font-medium outline-none hover:shadow-md focus:shadow-lg"
+      className="px-3 py-1 rounded text-sm font-medium outline-none hover:shadow-md focus:shadow-lg"
       style={{
         backgroundColor: "hsl(var(--card))",
         color: "hsl(var(--card-foreground))",
