@@ -2,12 +2,14 @@ body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: 'Inter', sans-serif;
-  transition: all 0.5s;
+  /* transition: all 0.5s; */
 }
 
+/*
 button {
   transition: all 0.5s;
 }
+*/
 
 input {
   border: 1px solid hsl(var(--border));
@@ -20,7 +22,7 @@ input:focus {
   box-shadow: 0 0 0 2px hsl(var(--ring));
 }
 
-
+/*
 @keyframes theme-fade {
   from {
     opacity: 0;
@@ -29,6 +31,7 @@ input:focus {
     opacity: 1;
   }
 }
+*/
 
 /*
 :root {
@@ -41,5 +44,5 @@ input:focus {
 */
 
 html.theme-transition {
-  animation: theme-fade 1.2s ease;
+  animation: theme-fade 1.0s ease;
 }
